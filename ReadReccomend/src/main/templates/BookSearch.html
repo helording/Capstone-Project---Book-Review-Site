@@ -1,0 +1,210 @@
+﻿
+﻿{% extends 'base.html' %}
+
+{% block head %}
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+<script>
+    $(document).ready(function(){
+        var cats =
+            ["Arts and Music", "Biographies", "Business", "Comics", "Computers and Tech", "Cooking",
+                "Entertainment", "Health and Fitness", "History", "Hobbies and Crafts",
+                "Home and Garden", "Horror", "Kids", "Literature and Fiction", "Medical",
+                "Mysteries", "Parenting", "Romance", "Sci - Fi and Fantasy",
+                "Science and Math", "Self - Help", "Social Sciences", "Sports",
+                "Teen", "Travel", "True Crime", "Westerns"];
+        $("#catList").select2({
+            data: cats
+        });
+      });
+</script>
+<title> Search for a book </title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../static/userhome.css">
+<link rel="stylesheet" type="text/css" href="../static/BookSearch.css">
+<link rel="stylesheet" type="text/css" href="../static/addReview.css">
+<link rel="stylesheet" type="text/css" href="../static/collectionpage.css">
+
+
+{%endblock%}
+
+
+
+{% block body %}
+<div class="container_cont">
+    <div class="container">
+      <div class="bg_find">
+        <h1 id="Title"> Find a book </h1>
+        <form id="search_form">
+            <div class="input">
+                <div class="label">Title:</div>
+                <input type="text" name="Title" id="title">
+            </div>
+            <div class="input">
+                <div class="label">Country:</div>
+                <input type="text" name="Country" id="country">
+            </div>
+            <div class="input">
+                <div class="label">Author:</div>
+                <input type="text" name="author"id="author">
+            </div>
+            <div class="input">
+                <div class="label">Publisher:</div>
+                <input type="text" name="publisher" id="publisher">
+            </div>
+
+            <div class="input">
+              <div class="flex-col flex-center">
+                <p class="ds-form-label">Category:</p>
+              </div>
+
+              <div class="flex-col flex-center">
+
+                  <input type="hidden" value="" id="divinestaroptions[font][font2]" name="category">
+                  <div tabindex="0" class="dropdown">
+                      <div class="ds-dropdown-items ">
+
+                          <div tabindex="0" class="ds-options-dropdownsearch-currentselected" onclick="dropDownSearchClick(event,'divinestaroptions[font][font2]')">
+                              <span id="divinestaroptions[font][font2]-dropdownsearch-currentselected">Categories....</span>
+                          </div>
+
+                          <div tabindex="0" id="divinestaroptions[font][font2]-dropdownsearch-clearcurrentselected" class="ds-options-dropdownsearch-clearselect">
+                              <span onclick="dropDownSearchClearSelect(event,&quot;divinestaroptions[font][font2]&quot;)" class="ds-close-image"></span>
+                          </div>
+
+                          <div tabindex="0" id="divinestaroptions[font][font2]-dropdownsearch-dropdownbutton" class="ds-options-dropdownsearch-dropdownbutton">
+                              <span onclick="dropDownSearchClick(event,&quot;divinestaroptions[font][font2]&quot;)" class="ds-arrowdown-image"></span>
+                          </div>
+
+                      </div>
+                  </div>
+                  <div id="divinestaroptions[font][font2]-dropdownsearch-dropdown" class="dropdown-content">
+                      <input class="ds-options-dropdownsearch-searchinput" type="text" placeholder="Search.." id="divinestaroptions[font][font2]-dropdownsearch-searchinput" onkeyup="filterFunction('divinestaroptions[font][font2]')">
+                      <div class="search-list-container" id="search-list-container">
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+
+            <div class="input">
+                <div class="rate">
+                    <div class="label">Minimum Rating:</div>
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                </div>
+            </div>
+
+
+
+            <pre id="search_log"></pre>
+            <br>
+            <div class="submit">
+                <input type="submit" value="submit">
+            </div>
+
+        </form>
+    </div>
+  </div>
+
+<div id="results"></div>
+</div>
+
+<script>CreateSearchPage();</script>
+
+<script>
+    var form = document.getElementById("search_form");
+    var log = document.getElementById("search_log");
+
+    form.addEventListener("submit", function (event) {
+        var data = new FormData(form);
+        console.log(data)
+        var output = "";
+        var dictData = {};
+        for (const entry of data) {
+            output = output + entry[0] + "=" + entry[1] + "\r";
+            dictData[entry[0]] = entry[1]
+
+        };
+        //log.innerText = output;
+        TrySearch(dictData)
+        event.preventDefault();
+    }, false);</script>
+
+
+
+
+<script>function dropDownSearchClick(event, form) {
+        event.preventDefault();
+        var button = document.getElementById(form + "-dropdownsearch-dropdownbutton")
+        button.getElementsByTagName("span")[0].classList.toggle("ds-image-rotate");;
+        document.getElementById(form + "-dropdownsearch-dropdown").classList.toggle("show");
+    }
+
+    function filterFunction(form) {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById(form + "-dropdownsearch-searchinput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById(form + "-dropdownsearch-dropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+
+    function clieckedDropDownSearchOption(value, form, id) {
+        console.log("hello")
+        console.log(value)
+        console.log(form)
+        console.log(id)
+        var orgvalue = value;
+        if (value.length >= 16) {
+            var split = value.split(" ");
+            value = split[0] + " " + split[1] + ".....";
+            if (value.length >= 16) {
+                value = value.substring(0, 16);
+            }
+        }
+        document.getElementById(form + '-dropdownsearch-currentselected').innerText = value;
+        document.getElementById(form + '-dropdownsearch-searchinput').value = '';
+        document.getElementById(form).value = id;
+        div = document.getElementById(form + "-dropdownsearch-dropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            a[i].style.display = "block";
+        }
+    }
+
+    function dropDownSearchClearSelect(event, form) {
+        event.preventDefault();
+        document.getElementById(form + '-dropdownsearch-currentselected').innerText = '';
+        document.getElementById(form + '-dropdownsearch-searchinput').value = '';
+        document.getElementById(form).value = '';
+        return;
+
+    }</script>
+
+<script>function saveID(HTMLElementObject) {
+        id = HTMLElementObject.id
+        //id = document.getElementById("id")
+        console.log(id)
+        window.localStorage.setItem("idBook", id)
+    }</script>
+
+
+{%endblock%}

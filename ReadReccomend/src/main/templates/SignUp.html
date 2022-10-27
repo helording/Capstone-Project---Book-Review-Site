@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title> SignUp </title>
+<link rel="stylesheet" type="text/css" href="../static/signup.css">
+{%endblock%}
+
+{% block body %}
+
+<div class="container">
+  <div class="body">
+    <div class="container">
+      <form class="bg_login">
+        <h1>Join NiceRead</h1>
+        <div class="login_div">
+          <label class="login_lable">Username</label>
+          <input class="input" type="text" name="username" id = "username">
+        </div>
+        <div class="login_div">
+          <label class="login_lable">Password</label>
+          <input class="input" type="password" name="password" id = "password" required>
+        </div>
+        <div class="login_div">
+          <button id = "SignUpSub" value="Submit" type="button" onclick=TrySignUp()>Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script>
+    document.getElementById("sidebar").style.visibility = "hidden";
+</script>
+{%endblock%}

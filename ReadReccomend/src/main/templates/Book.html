@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script>
+    //maybe a add to collection function here;
+
+</script>
+<title> Book </title>
+{%endblock%}
+
+
+{% block body %}
+<div class="container_cont">
+
+    <div id="BookTitle">
+        <t id="title" class="BookTitle"> </t>
+    </div>
+
+    <div class="BookContainer" id="Book" onload=CreateBookPage()>
+        <div class="column">
+            <t>Authors: <t class="textBook" id="Authors"> </t></t><br>
+            <t>Country: <t class="textBook" id="Country"></t></t> <br>
+            <t>Keywords: <t class="textBook" id="Keywords"></t></t><br>
+            <t>Category: <t class="textBook" id="Category"></t></t><br>
+            <t>Average rating:<t class="textBook" id="aveRating"> </t></t>
+            <br>
+            <select id="cols" style="width:150px">
+                <option value="" selected hidden> add a collection</option>
+
+            </select>
+            <button onclick= "tryAdd()"> add</button>
+            <br>
+            <a id="readenButton" class="link"></a>
+            <br>
+            <a id="goalButton" class="link">
+
+            </a>
+            <br>
+            <div id="dateInput">
+                <input type="date" id="readTime" required>
+                <button onclick="addToReadList()"> submit</button>
+            </div>
+            <br>
+            <a id="readerNum"> </a>
+
+        </div>
+        <div id="barChart" class="column"> </div>
+        <div id="imageDiv" class="column">
+            <img alt="Book Cover" id="Book Cover">
+            <br />
+        </div>
+    </div>
+    <hr>
+    <div id="description" class="description ">
+        <h3>description</h3>
+        <t id="descriptionCotent" class="textBook"></t>
+    </div>
+
+    <div class="tab-bd">
+        <div id="Reviews" class="tab">
+            <h2>Others' Reviews </h2>
+            <hr>
+
+        </div>
+    </div>
+
+</div>
+<div class=circleSmall onclick="location.href = 'AddReview';" title="to create a new review" id="reviewLink">
+    <div class='horizontal-plus'></div>
+    <div class='vertical-plus'></div>
+</div>
+<script>CreateBookPage();
+    TryReadProfile()
+    getNumberOfReaders();
+    var today = new Date();
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+  
+    document.getElementById("readTime").setAttribute("min", formatDate(today));
+    var userCol = [];
+    var userInfo = window.localStorage.getItem('userInfo');
+  
+    var userData = JSON.parse(userInfo);
+
+    for (i = 0; i < userData["collections"].length; i++) {
+        userCol.push(userData["collections"][i]["name"]);
+    }
+
+    $(document).ready(function () {
+        $("#cols").select2({
+            data : userCol
+        })
+    });
+    function nameToId(name) {
+        var i = 0;
+        while (i < userData["collections"].length) {         
+            if (userData["collections"][i]["name"] == name) {
+                return userData["collections"][i]["id"];
+            }
+            i++;
+        }
+
+    }
+    
+    function tryAdd() {
+        var colID = nameToId($("#cols").val());
+        var idBook = window.localStorage.getItem('idBook');
+        addToAgivenCol(colID, idBook);
+    }
+
+</script>
+
+{%endblock%}

@@ -1,0 +1,27 @@
+button#signup {
+    width: 240px;
+    height: 40px;
+    margin: 10px;
+}
+
+button#login {
+  
+    width: 240px;
+    height: 40px;
+    margin: 10px;
+}
+
+#body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 10%;
+}

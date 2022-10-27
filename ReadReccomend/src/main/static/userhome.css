@@ -1,0 +1,85 @@
+
+
+.container_cont{
+    float: left;
+    width: 483px;
+    height: calc(100vh - 76px);
+    margin-left: 35px;
+}
+
+.clear_fix{
+    clear: both;
+}
+
+h2{
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+#Reading_state{
+    margin-top: 30px;
+    width: 100%;
+    float: left;
+    background-color: white;
+}
+
+#Reading_state p{
+    padding: 0;
+    margin: 0;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+
+}
+
+#feed{
+    height: calc(100% - 200px);
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+    background-color: white;
+}
+
+
+#bg_books{
+    margin-top: 30px;
+    margin-left: 50px;
+    height: calc(100% - 30px);
+    background-color: white;
+}
+
+#bg_collections{
+    margin-top: 30px;
+    margin-left: 50px;
+    height: calc(100% - 30px);
+    background-color: white;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(44,108,128);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.horizontal-plus {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 50%;
+    height: 12.5%;
+    left: 25%;
+    top: 43.75%;
+}
+
+.vertical-plus {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 12.5%;
+    height: 50%;
+    left: 43.75%;
+    top: 12.5%;
+}

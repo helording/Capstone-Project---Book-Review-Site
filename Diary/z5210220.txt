@@ -1,0 +1,36 @@
+Week 1
+- Met group member for the first time.
+- Familiarised myself with Jira
+
+Week 2
+- Researched competitors to ReadRecommend for the proposal
+
+Week 3
+- Updated Jira sprints
+- Added screenshots to proposal
+- Fixed report formatting + grammar mistakes
+
+Week 04
+- Worked on UML diagram
+- Respsonsible for "Book" and "Review" classes
+
+Week 05
+- Worked on backend, queries for the data base
+- Added a few end points the front end to talk to the back end
+
+Week 06
+- More working on back end
+- Added some tests
+- Worked on the advanced search feature
+
+Week 07
+- Creating plan for recommendation system
+
+Week08
+- Added a few tests
+
+Week 09
+- Fixed some bugs in the back end
+- Added test cases for fixed bugs
+- Fixed some broken test cases
+- Added functions to follow/unfollow users + receive updates on events

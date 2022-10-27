@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title> Search for another user's collection </title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../static/userhome.css">
+<link rel="stylesheet" type="text/css" href="../static/BookSearch.css">
+<link rel="stylesheet" type="text/css" href="../static/otherscollections.css">
+<link rel="stylesheet" type="text/css" href="../static/social.css">
+
+
+
+{%endblock%}
+
+
+
+{% block body %}
+<div class="container_cont">
+  <h1 id='title' class='title'>Social Home</h1>
+  <br>
+    <div class="container">
+      <div class="bg_find">
+        <h1> People you are following </h1>
+          <div id="following" class=""></div>
+          <a href=/addALeader>Follow someone</a>
+          <a class="linkSocial" onclick='unfollowSomeone()' id="unfollow">Unfollow someone</a>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="bg_find">
+      <h1> Your followers </h1>
+        <div id="followers" class="">
+        </div>
+     </div>
+   </div>
+   <br>
+   <div class="container">
+     <div class="bg_find">
+       <h1> Events made by you </h1>
+         <div id="yourEvents" class=""></div>
+         <a href=/createEvent>Create an event</a>
+         <a class="linkSocial" onclick='completeEventButton()' id="completeE">Complete event</a>
+         <br>
+         <br>
+       <h1> Events made by people you follow </h1>
+       <div id="leadersEvents" class=""></div>
+    </div>
+</div>
+
+
+
+<script>function saveID(HTMLElementObject) {
+        id = HTMLElementObject.id
+        //id = document.getElementById("id")
+        console.log(id)
+        window.localStorage.setItem("userID", id)
+    }</script>
+
+    <script>
+          CreateSocialPage();
+    </script>
+
+    <script>function saveBookID(HTMLElementObject) {
+            id = HTMLElementObject.id
+            //id = document.getElementById("id")
+            console.log(id)
+            window.localStorage.setItem("idBook", id)
+        }</script>
+
+{%endblock%}

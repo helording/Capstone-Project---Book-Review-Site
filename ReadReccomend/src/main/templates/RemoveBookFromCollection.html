@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title> Remove Book From Collection Page</title>
+<link rel="stylesheet" type="text/css" href="../static/collectionpage.css">
+{%endblock%}
+
+
+{% block body %}
+<div class="container_cont">
+    <div class="container" id="Collection" onload=CreateRemoveBookFromCollectionPage()>
+        <div id="CollectionName"></div>
+        <div id="Books"> </div>
+    </div>
+</div>
+    <script>CreateRemoveBookFromCollectionPage();</script>
+
+
+    {%endblock%}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script></script>
+<title> finished Reading Goal </title>
+{%endblock%}
+{% block body %}
+<div class="container_cont">
+    <H1>User's Reading History</H1>
+    <div class="readGoal">
+        Finished Goals:
+        <div id="books">
+        </div>
+    </div>
+    <br>
+
+    <div class="interest">
+        Overdue Goals:
+        <div id="interestBooks">
+        </div>
+
+    </div>
+</div>
+<script>
+    getAllGoal(true, true, "books");
+    getAllGoal(false, false, "interestBooks");
+</script>
+{%endblock%}

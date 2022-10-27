@@ -1,0 +1,206 @@
+.ds-form-label {
+
+	margin-right: 10px;
+}
+.center {
+  text-align: center;
+}
+.flex-center {
+	align-items: center;
+}
+.flex-row {
+  align-items: center;
+  margin-right: auto;
+
+	flex-wrap: nowrap;
+}
+
+.flex-col {
+	display: inline-flex;
+	flex-wrap: nowrap;
+}
+.ds-options-dropdownsearch-currentselected {
+  color: black;
+  width: 150px;
+  font-size: 14px;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+.ds-options-dropdownsearch-currentselected span{
+	padding: 0px;
+
+}
+.ds-options-dropdownsearch-clearselect {
+  width: 15px;
+  height: 22px;
+}
+.ds-options-dropdownsearch-clearselect:hover {
+ cursor: pointer;
+}
+.ds-options-dropdownsearch-clearselect span.ds-close-image {
+    padding: 2px 15px 14px 2px;
+
+    box-sizing: border-box;
+    background-image: url('https://lukejohnson.media/examples/icons/close_mini.svg');
+   background-position: 0px 6px;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+}
+
+
+.ds-options-dropdownsearch-dropdownbutton {
+    padding: 4px;
+	border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+	height: 17px;
+	width: 19px;
+
+	background-image: linear-gradient( #0071a1, #ccefff);
+}
+.ds-options-dropdownsearch-dropdownbutton span.ds-arrowdown-image.ds-image-rotate {
+	background-image: url('https://lukejohnson.media/examples/icons/arrow_up.svg');
+	transform: rotate(180deg);
+	border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.ds-options-dropdownsearch-dropdownbutton:hover {
+	background-color:  #016087;
+	cursor: pointer;
+}
+.ds-options-dropdownsearch-dropdownbutton span.ds-arrowdown-image {
+	padding: 2px 15px 14px 0px;
+    margin-top: 5px;
+    box-sizing: border-box;
+	background-image: url('https://lukejohnson.media/examples/icons/arrow_down.svg');
+	background-position: 0px 4px;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+
+}
+.ds-options-dropdownsearch-searchinput {
+  box-sizing: border-box;
+  background-image: url('https://lukejohnson.media/examples/icons/search.svg');
+  background-position: 170px 5px;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  font-size: 14px;
+  padding: 14px 20px 12px 5px;
+  border: none;
+  width: 198px;
+  height: 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+/*
+.ds-options-dropdownsearch-searchinput:focus
+{outline: 3px solid #ddd;}
+*/
+.dropdown {
+  width: 200px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  position: relative;
+  display: inline-block;
+}
+.dropdown:hover, .dropdown:focus {
+  background-color: #e6e6e6;
+
+}
+.dropdown-content {
+  text-align: left !important;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  width: 200px;
+  overflow: auto;
+  z-index: 900;
+  margin-top: 210px;
+
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 5px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content.show {
+	display: block;
+}
+.search-list-container {
+
+	height: 150px;
+
+	overflow-y: scroll;
+}
+.ds-dropdown-items div {
+	display: inline-block;
+}
+
+.ds-options-font-display {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+	width: 350px;
+
+}
+
+
+.container_cont {
+  float: left;
+  margin: 0px;
+  padding-left: 30px;
+  padding-top: 30px;
+  width: 1570px;
+  height: calc(100vh - 76px);
+}
+
+.bg_find{
+  padding: 20px;
+  background-color: white;
+  width: 600px;
+  min-height::420px;
+}
+
+.bg_find h1{
+  margin: auto;
+}
+
+.label{
+  float: left;
+  width: 150px;
+}
+
+.input {
+	padding-left: 30px;
+  padding-top: 30px;
+}
+
+.submit {
+	padding-left: 30px;
+  padding-top: 30px;
+}
+
+
+#submit{
+  height: 30px;
+  width: 80px;
+}
+
+#id{
+  background-color: white;
+  width: 600px;
+}

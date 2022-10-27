@@ -1,0 +1,62 @@
+.book {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.contentblock {
+		margin-top: 20px;
+		margin-bottom: 20px;
+}
+
+.contentblocktitle {
+		font-size:30px;
+}
+
+.collection {
+		margin-top: 30px;
+}
+
+.bookCoverColPage {
+		width:51px;
+		height:78px;
+}
+
+.bookLink {
+	font-size: 1.5rem;
+	position:relative;
+	left: 1rem;
+	top: -3.5rem;
+	font-weight: 700;
+}
+
+.Keywords {
+	font-size: 0.7rem;
+	position:relative;
+	left: 4.2rem;
+	top: -3.25rem;
+	font-weight: 700;
+}
+
+.Authors {
+	font-size: 0.7rem;
+	position:relative;
+	left: 4.2rem;
+	top: -3.25rem;
+	font-weight: 700;
+}
+
+.Category {
+	font-size: 0.7rem;
+	position:relative;
+	left: 4.2rem;
+	top: -3.25rem;
+	font-weight: 700;
+}
+
+.Reviews {
+	font-size: 0.7rem;
+	position:relative;
+	left: 4.2rem;
+	top: -3.25rem;
+	font-weight: 700;
+}

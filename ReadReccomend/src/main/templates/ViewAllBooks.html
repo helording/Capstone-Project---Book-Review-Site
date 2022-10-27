@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title> Books Page </title>
+<link rel="stylesheet" type="text/css" href="../static/userhome.css">
+{%endblock%}
+{% block body %}
+
+<div class="container" onload=CreateViewAllBooksPage()>
+
+<div class="container">
+    <h1>Books </h1>
+		<div id="Books"> </div>
+</div>
+
+<script>
+  CreateViewAllBooksPage();
+</script>
+
+<script>
+  function saveID(HTMLElementObject) {
+    id = HTMLElementObject.id
+    //id = document.getElementById("id")
+    console.log(id)
+    window.localStorage.setItem("idBook", id)
+  }
+</script>
+
+
+
+{%endblock%}

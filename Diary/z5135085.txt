@@ -1,0 +1,48 @@
+Week 1
+Group formed. I created the Jira and joined Jira.
+I started to wrote the user story & sprints section of the proposal but I found i can't delate the repeated ones.
+I also found and discussed with the team possible available software tool for the project like.
+
+Week 2:
+
+This week the team planned out work for the proposal. 
+Discussion were had surrounding the functions of the system and the user stories were formed based off these discussion and also the objectives in the
+project description. 
+
+
+Week 3: 
+
+This week I finished editing the background for the proposal. 
+I also completed the user stories section of the proposal, adding the user stories that were on Jira and also outlining the sprints for the project. 
+I also helped out with the interface development. 
+
+
+Week 4:
+
+Starting working on the front end portion of the first sprint functions.
+
+Week 5:
+
+Conducted the week 5 demo.
+
+Week 6:
+
+Began work on differnt html pages 
+
+Week 7: 
+
+Began on front end for add books to collections and others functions.
+
+I also spent time writing the week 7 retrospective.
+
+week 8: 
+
+This week was spent fixing existing bugs in the books pages and add more content.
+
+I also conducted the demo for week 8.
+
+Week 9:
+Differnt pages css, but it is hard
+
+Week 10:
+This week was spent implementing all of the userhome and user history pages. 

@@ -1,0 +1,22 @@
+.event {
+	margin-top: 12.5px;
+	margin-bottom: 12.5px;
+}
+
+.eventElement {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+.personLink {
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-top: 12.5px;
+	margin-bottom: 12.5px;
+}
+
+.linkSocial {
+	cursor: pointer;
+	color: rgb(85, 26, 139);
+}

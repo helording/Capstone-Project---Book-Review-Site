@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title> Follow Someone </title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../static/userhome.css">
+<link rel="stylesheet" type="text/css" href="../static/BookSearch.css">
+<link rel="stylesheet" type="text/css" href="../static/otherscollections.css">
+
+
+{%endblock%}
+
+
+
+{% block body %}
+<div class="container_cont">
+    <div class="container">
+      <div class="bg_find">
+        <h1 id="Title"> Follow Someone </h1>
+        <form id="search_form">
+            <div class="input">
+                <div class="label">User's name:</div>
+                <input type="text" name="username" id="username">
+            </div>
+
+            <div class="submit">
+                <input type="submit" value="submit">
+            </div>
+
+        </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    var form = document.getElementById("search_form");
+    var log = document.getElementById("search_log");
+
+    form.addEventListener("submit", function (event) {
+        var data = new FormData(form);
+        var output = "";
+        var dictData = {};
+        for (const entry of data) {
+            output = output + entry[0] + "=" + entry[1] + "\r";
+            dictData[entry[0]] = entry[1]
+
+        };
+        FollowSomeone(dictData)
+        event.preventDefault();
+    }, false);</script>
+
+{%endblock%}

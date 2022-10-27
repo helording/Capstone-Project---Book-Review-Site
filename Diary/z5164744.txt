@@ -1,0 +1,70 @@
+Week 2:
+
+This week the team planned out work for the proposal. 
+Numerous discussion were had surrounding the functions of the system and the user stories were formed based off these discussion and also the objectives in the
+project description. 
+I added some user stories and edited a few existing stories on Jira. 
+
+
+Week 3: 
+
+This week I finished editing the background for the proposal. 
+I also completed the user stories section of the proposal, adding the user stories that were on Jira and also outlining the sprints for the project. 
+I also helped out with the interface development. 
+
+
+Week 4:
+
+Starting working on the front end portion of the first sprint. Most of the week was learning about javascript, html and css. Wrote a basic profile html page with
+css. 
+
+Because of my lack of experience doing back-end work, I wasn't able to contribute as much as I would have liked in this week. I spent most of the time figuring out
+the what the different languages and APIs are used for and the interactions with front end and back end.
+
+Week 5:
+
+Began coding front end for editing user information and creating collections pages. Got both of these pages done. However it took longer than expected because of
+errors cause by jwt plugin not being the updated to the latest version. Errors were also caused by the axios http client. Since it was the first time I or Yu had
+used axios we weren't familiar with the syntaxing, which caused bugs in our code that were difficult to diagnose.
+
+I also conducted the week 5 demo.
+
+Week 6:
+
+Began work on a pages for viewing collections and adding books to a collection. To make these we had to make dynamic html pages through javascript. 
+
+Week 7: 
+
+Began on front end for removing books from collections, adding reviews for books and search book function. None of these were difficult to do except to create a
+drop down menu for selecting a category in the search function. For the category seleciton in search, it had to be a drop down menu, as having the user input the
+category manually could lead to incorrectly typed categories and errors. This means that the user must need to select a categoryfrom a list provided to them. 
+Additionally because there are over 20 categories in the system, the categories needed to be in a scrollable format and not in the form of traditional radio buttons.  
+
+A searchable drop down menu was then used to fix these problems. However this required complex html and javacript functions to work. This took a siginificant time
+to make work. 
+
+I also spent time writing the week 7 retrospective.
+
+week 8: 
+
+This week was spent fixing existing bugs in the search function and also spent creating the search function when users want to 
+add books to collection, so they can search for books they want to add instead of being given a list of all the books in the system. 
+
+I also conducted the demo for week 8.
+
+Week 9:
+
+The major project I completed this week was doing the recommendation mode for the front end. This meant creating javascript functions, html pages and styling to the
+pages. Minor issues were had with there being two form submissions in the html page, which caused the wrong submit function to be triggered for each form. CSS
+styling was also done for existing pages such as collections, collection and search pages. Changes were also made the book descriptions from search and
+recommendation results with book covers also added.
+Delete collection function and logout was also added to the front end.
+
+For this week I also wrote the retrospective report.
+
+Week 10:
+This week was spent implementing all of the social front end. This included creating the social home page, other users page, having followers and creating events.
+This took a lot of work as many javascript functions were required, html pages needed to be created and the css styling needed to be done for all the pages.
+
+I also created the front end user manual in the report, wrote the specification and add functionality descriptions and wrote parts of the overview. 
+Time was also spent organising the team to get ready for the presentation, and preparing the functionalities I allocated for the presentation.

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title> Other Users Collection Page </title>
+<link rel="stylesheet" type="text/css" href="../static/base.css">
+<link rel="stylesheet" type="text/css" href="../static/collections.css">
+<link rel="stylesheet" type="text/css" href="../static/otherscollections.css">
+<link rel="stylesheet" type="text/css" href="../static/social.css">
+<link rel="stylesheet" type="text/css" href="../static/otherUsersPage.css">
+<link rel="stylesheet" type="text/css" href="../static/BookSearch.css">
+
+{%endblock%}
+
+{% block body %}
+
+<div class="container_cont">
+    <h1 id='title' class='title'></h1>
+    <br>
+    <div class="container">
+      <div class="bg_find">
+        <h1>Collections: </h1>
+          <div class="userCollections" id="userCollectionList"></div>
+      </div>
+    </div>
+
+    <br>
+    <div class="container">
+      <div class="bg_find">
+        <h1>User's Events: </h1>
+        <div id="eventList"></div>
+      </div>
+    </div>
+</div>
+
+<script>
+  CreateOtherUsersPage();
+</script>
+
+<script>
+  function saveID(HTMLElementObject) {
+    id = HTMLElementObject.id
+
+    console.log(id)
+    window.localStorage.setItem("idCol", id)
+  }
+
+    function readInName() {
+        var collectionName = prompt("Please enter your collection name:");
+        if (collectionName == null || collectionName == "") {
+
+        } else {
+            TryCreateCollection(collectionName)
+        }
+    }
+
+    function saveBookID(HTMLElementObject) {
+      id = HTMLElementObject.id
+
+      console.log(id)
+      window.localStorage.setItem("idBook", id)
+    }
+</script>
+
+{%endblock%}

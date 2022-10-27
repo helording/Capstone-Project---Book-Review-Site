@@ -1,0 +1,34 @@
+Week 1
+Group formed. I created the Jira and joined Jira.
+Worked on a few user stories.
+
+Week 2
+worked on the proposal
+
+Week 3
+worked on the system archetecture side of the proposal
+added some basic endpoints for the books database.
+
+Week 4
+added collections to the database
+added search functions to collections and database tables
+
+Week 5
+fixed a few bugs around collections and worked on suring up collections
+
+Week 6
+fixed a few bugs around ratings and searches
+
+
+Week 7
+added functionality for users to "read" books
+
+Week 8
+created reccomender function getRecomendationForBookByBoookRating
+created a few endpoints
+
+Week 9
+added image URL to the database
+added startup scripts
+added description to the books table
+added a few book functions

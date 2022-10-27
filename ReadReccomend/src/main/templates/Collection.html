@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title> Collection Page </title>
+<link rel="stylesheet" type="text/css" href="../static/base.css">
+<link rel="stylesheet" type="text/css" href="../static/collectionpage.css">
+
+{%endblock%}
+
+
+{% block body %}
+<div class="container_cont">
+  <div id="Collection" class="collection">
+    <div class="container" id="Collection" onload=CreateCollectionPage()>
+      <div id = "CollectionName"></div>
+      <div id="Books" class="contentblock">
+        <div class="contentblocktitle">
+          Books:
+        </div>
+      </div>
+      <div id="NewBooks" class="contentblock">
+        <div class="contentblocktitle">
+          Latest 10 books in the collection:
+        </div>
+      </div>
+      <a href="addBookToCollection">Add a book to collection</a>
+      <a href="RemoveBookFromCollection">Remove a book to collection</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  CreateCollectionPage();
+</script>
+
+<script>
+  function saveID(HTMLElementObject) {
+    id = HTMLElementObject.id
+  
+    console.log(id)
+    window.localStorage.setItem("idBook", id)
+  }
+</script>
+
+{%endblock%}

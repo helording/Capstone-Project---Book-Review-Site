@@ -1,0 +1,301 @@
+
+﻿{% extends 'base.html' %}
+
+{% block head %}
+<title> Recommendation </title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../static/userhome.css">
+<link rel="stylesheet" type="text/css" href="../static/BookSearch.css">
+<link rel="stylesheet" type="text/css" href="../static/addReview.css">
+<link rel="stylesheet" type="text/css" href="../static/collectionpage.css">
+<link rel="stylesheet" type="text/css" href="../static/recommendation.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+{%endblock%}
+
+
+{% block body %}
+<div class="container_cont">
+  <h1 id="Title" class="title"> Get Recommended a Book </h1>
+    <div class="container">
+      <div class="bg_find">
+        <br>
+        <h1 id="Title"> Select a Book </h1>
+        <form id="search_form">
+            <div class="input">
+                <div class="label">Title:</div>
+                <input type="text" name="Title">
+            </div>
+            <div class="input">
+                <div class="label">Country:</div>
+                <input type="text" name="Country">
+            </div>
+            <div class="input">
+                <div class="label">Author:</div>
+                <input type="text" name="author">
+            </div>
+            <div class="input">
+                <div class="label">Publisher:</div>
+                <input type="text" name="publisher">
+            </div>
+
+            <div class="input">
+              <div class="flex-col flex-center">
+                <p class="ds-form-label">Category:</p>
+              </div>
+
+              <div class="flex-col flex-center">
+
+                  <input type="hidden" value="" id="divinestaroptions[font][font2]" name="category">
+                  <div tabindex="0" class="dropdown">
+                      <div class="ds-dropdown-items ">
+
+                          <div tabindex="0" class="ds-options-dropdownsearch-currentselected" onclick="dropDownSearchClick(event,'divinestaroptions[font][font2]')">
+                              <span id="divinestaroptions[font][font2]-dropdownsearch-currentselected">Categories....</span>
+                          </div>
+
+                          <div tabindex="0" id="divinestaroptions[font][font2]-dropdownsearch-clearcurrentselected" class="ds-options-dropdownsearch-clearselect">
+                              <span onclick="dropDownSearchClearSelect(event,&quot;divinestaroptions[font][font2]&quot;)" class="ds-close-image"></span>
+                          </div>
+
+                          <div tabindex="0" id="divinestaroptions[font][font2]-dropdownsearch-dropdownbutton" class="ds-options-dropdownsearch-dropdownbutton">
+                              <span onclick="dropDownSearchClick(event,&quot;divinestaroptions[font][font2]&quot;)" class="ds-arrowdown-image"></span>
+                          </div>
+
+                      </div>
+                  </div>
+                  <div id="divinestaroptions[font][font2]-dropdownsearch-dropdown" class="dropdown-content">
+                      <input class="ds-options-dropdownsearch-searchinput" type="text" placeholder="Search.." id="divinestaroptions[font][font2]-dropdownsearch-searchinput" onkeyup="filterFunction('divinestaroptions[font][font2]')">
+                      <div class="search-list-container" id="search-list-container">
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="input">
+              <div class="rate">
+                  <div class="label">Minimum Rating:</div>
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+              </div>
+           </div>
+
+            <pre id="search_log">
+            </pre>
+
+             <br>
+            <div class="submit">
+              <input type="submit" value="submit">
+            </div>
+         </form>
+    </div>
+  </div>
+<div id="results"</div>
+</div>
+
+<br>
+
+    <div class="container">
+      <div class="bg_find">
+        <form id="rec_form">
+            <div class="input">
+              <div class="rec">
+                  <div class="label">Recommendation Mode:</div>
+                  <input type="radio" id="rating" name="rec" value="rating" />
+                  <label for="rating" title="text">rating</label>
+                  <input type="radio" id="keywords" name="rec" value="keywords" />
+                  <label for="keywords" title="text">keywords</label>
+                  <input type="radio" id="author" name="rec" value="author" />
+                  <label for="author" title="text">author</label>
+                  <input type="radio" id="category" name="rec" value="category" />
+                  <label for="category" title="text">category</label>
+                  <input type="radio" id="otherReaders" name="rec" value="otherReaders" />
+                  <label for="otherReaders" title="text">what others have read</label>
+              </div>
+           </div>
+
+           <pre id="rec_log">
+           </pre>
+
+            <div class="submit">
+              <input type='submit' value="submit">
+            </div>
+        </form>
+    </div>
+  </div>
+<br>
+<div id="error"> </div>
+<br>
+
+<div id="recommendations" class="recommendations"</div>
+</div>
+
+    <script>
+      CreateSearchPage();
+      window.localStorage.setItem("idRecBook", 0)
+    </script>
+
+    <script>
+
+        var form = document.getElementById("rec_form");
+        var log = document.getElementById("rec_log");
+
+        form.addEventListener("submit", function (event) {
+
+            // Wipe all recommendations that may have been made earlier
+            var node= document.getElementById("recommendations");
+            while (node.firstChild) {
+              node.removeChild(node.firstChild);
+            }
+
+            var data = new FormData(document.getElementById("rec_form"));
+            var output = "";
+            var dictData = {};
+            for (const entry of data) {
+                output = output + entry[0] + "=" + entry[1] + "\r";
+                dictData[entry[0]] = entry[1]
+
+            };
+            console.log(dictData)
+            bookID = window.localStorage.getItem('idRecBook');
+
+            if (dictData['rec'] == "keywords" || dictData['rec'] == "otherReaders"){
+                bookID = -1;
+                console.log(bookID)
+
+            }
+            console.log(bookID)
+            if (bookID == 0 || dictData['rec'] == null){
+              console.log("HERE")
+              errorDiv = document.getElementById("error");
+              errorDiv.innerHTML = "Please enter all parameters"
+            } else {
+              console.log("Executing")
+              errorDiv = document.getElementById("error");
+              errorDiv.innerHTML = ""
+              ExecuteRecommendation(bookID, dictData["rec"])
+            }
+            event.preventDefault();
+        }, false);
+      </script>
+
+    <script>var form = document.getElementById("search_form");
+        var log = document.getElementById("search_log");
+
+        form.addEventListener("submit", function (event) {
+            var data = new FormData(form);
+            console.log(data)
+            var output = "";
+            var dictData = {};
+            for (const entry of data) {
+                output = output + entry[0] + "=" + entry[1] + "\r";
+                dictData[entry[0]] = entry[1]
+
+            };
+            //log.innerText = output;
+            SearchForRecommendation(dictData)
+            event.preventDefault();
+        }, false);</script>
+
+
+
+
+    <script>function dropDownSearchClick(event, form) {
+            event.preventDefault();
+            var button = document.getElementById(form + "-dropdownsearch-dropdownbutton")
+            button.getElementsByTagName("span")[0].classList.toggle("ds-image-rotate");;
+            document.getElementById(form + "-dropdownsearch-dropdown").classList.toggle("show");
+        }
+
+        function filterFunction(form) {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById(form + "-dropdownsearch-searchinput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById(form + "-dropdownsearch-dropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a[i].style.display = "";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+        }
+
+        function clieckedDropDownSearchOption(value, form, id) {
+            console.log("hello")
+            console.log(value)
+            console.log(form)
+            console.log(id)
+            var orgvalue = value;
+            if (value.length >= 16) {
+                var split = value.split(" ");
+                value = split[0] + " " + split[1] + ".....";
+                if (value.length >= 16) {
+                    value = value.substring(0, 16);
+                }
+            }
+            document.getElementById(form + '-dropdownsearch-currentselected').innerText = value;
+            document.getElementById(form + '-dropdownsearch-searchinput').value = '';
+            document.getElementById(form).value = id;
+            div = document.getElementById(form + "-dropdownsearch-dropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                a[i].style.display = "block";
+            }
+        }
+
+        function dropDownSearchClearSelect(event, form) {
+            event.preventDefault();
+            document.getElementById(form + '-dropdownsearch-currentselected').innerText = '';
+            document.getElementById(form + '-dropdownsearch-searchinput').value = '';
+            document.getElementById(form).value = '';
+            return;
+
+        }</script>
+
+    <script>function saveID(HTMLElementObject) {
+            id = HTMLElementObject.id
+            console.log(id)
+            //id = document.getElementById("id")
+            prevID = window.localStorage.getItem('idRecBook');
+            console.log("prevID =: " + prevID)
+
+            if (prevID == 0){
+              window.localStorage.setItem("idRecBook", id)
+              HTMLElementObject.setAttribute("style", "color:#FF0000;")
+
+            } else {
+              console.log("prevID in if =: " + prevID)
+              prevDiv = document.getElementById(prevID);
+              if (prevDiv == null) {
+
+              } else {
+                  prevDiv.setAttribute("style", "color:#000000;")
+              }
+              window.localStorage.setItem("idRecBook", id)
+              HTMLElementObject.setAttribute("style", "color:#FF0000;")
+            }
+
+        }</script>
+
+
+    <script>function saveIDRecResults(HTMLElementObject) {
+            id = HTMLElementObject.id
+
+            console.log(id)
+            window.localStorage.setItem("idBook", id)
+
+        }</script>
+
+
+{%endblock%}
